@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <script src="js/configurable.js"/>
+        <css src="css/owl.carousel.min.css" rel="stylesheet" type="text/css"/>
+        <css src="css/owl.theme.default.min.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <container name="product.main.section" htmlTag="div" htmlClass="product-main-section"/>
+            <block class="Magento\Cms\Block\Block" name="custom.static.block.after.main.section.view.more.like">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">view-more-like-this-product</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Cms\Block\Block" name="custom.static.block.after.main.section">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">note-from-the-editor</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+
+        <move element="product.info.overview" destination="product.info.main" before="product.info.price"/>
+        <referenceBlock name="product.info.sku" remove="true"/>
+        <referenceBlock name="product.info.stock.sku" remove="true"/>
+        <referenceBlock name="product.info.stock.status" remove="true"/>
+        <referenceContainer name="product.info.review" remove="true"/>
+        <referenceContainer name="reviews.tab" remove="true"/>
+        <referenceContainer name="view.addto.compare" remove="true"/>
+        <move element="product.info.media" destination="product.main.section" before="-"/>
+        <move element="product.info.main" destination="product.main.section"  after="product.info.media"/>
+        <move element="product.info.description" destination="product.main.section" before="-"/>
+        <move element="view.addto.wishlist" destination="product.info.media" before="-"/>
+        <move element="product.attributes" destination="content" before="-" />
+        <move element="product.info.overview" destination="content" after="product.info.media"/>
+
+        <referenceContainer name="product.info.main">
+            <block class="Magento\Cms\Block\Block" name="custom.static.block.after.addtocart">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">product-text-after-add-cart-button</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        
+        <referenceBlock name="breadcrumbs" remove="true" />
+        <referenceContainer name="footer" remove="true"/>
+        <referenceContainer name="copyright" remove="true"/>
+    </body>
+</page>
